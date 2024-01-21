@@ -25,6 +25,7 @@ jobs:
           pip install -r starter/requirements.txt
   pytest:
     name: Runs PyTest
+    needs: [install-dependencies]
     runs-on: ubuntu-latest
     steps:
     - id: some-pytest
