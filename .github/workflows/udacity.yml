@@ -10,7 +10,7 @@ on:
       - master
       - main
 jobs:
-  install-dependencies:
+  install-dependencies-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,14 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r starter/requirements.txt
-  pytest:
-    name: Runs PyTest
-    needs: [install-dependencies]
-    runs-on: ubuntu-latest
-    steps:
-    - id: some-pytest
-      run: pytest --exitfirst ./starter
-      shell: bash
-    - id: flake8-test
-      run: flake8 ./starter
-      shell: bash
+      - id: some-pytest
+        run: pytest --exitfirst ./starter
+        shell: bash
+      - id: flake8-test
+        run: flake8 ./starter
+        shell: bash
