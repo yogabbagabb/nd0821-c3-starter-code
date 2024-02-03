@@ -19,7 +19,10 @@ census.gov has made available an anonymized data set of user attributes and sala
 census.gov has made available an anonymized data set of user attributes and salaries. The evaluation data was obtained through an arbitrary horizontal slice of this data.
 
 ## Metrics
-The metrics for the model's performance can be found in `data/slice_output.txt`. These metrics show the model's performance, when the model is applied to a dataset that is obtained by restricting the value of the `education` feature to a single value. For example, there is a metric that measures model performance when the data set solely consists of persons whose `education` is `Bachelors`. Likewise, there is a metric that measures performance when `education` is `Doctorate`.
+
+The metrics for the model's performance can be found in `data/slice_output.txt`. These metrics show the model's performance, when the model is applied to a dataset that is obtained by restricting the value of the `education` feature to a single value. For example, there is a metric that measures model performance when the data set solely consists of persons whose `education` is `Bachelors`. Likewise, there is a metric that measures performance when `education` is `Doctorate`, and so forth.
+
+The metrics used are `precision`, `recall` and `fbeta`.
 
 ## Ethical Considerations
 
