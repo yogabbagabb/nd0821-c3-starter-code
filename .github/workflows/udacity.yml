@@ -29,3 +29,12 @@ jobs:
       - id: flake8-test
         run: flake8 ./starter
         shell: bash
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - id: change-render-env-variable
+        run: |
+          echo $(date) > env.txt
+          export RENDER_TOKEN=${{ secrets.RENDER_API_KEY }}
+          render-cli set-env nd0821-c3-starter-code -f env.txt
+        shell: bash
