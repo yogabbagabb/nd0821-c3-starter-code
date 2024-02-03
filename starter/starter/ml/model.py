@@ -1,6 +1,7 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from starter.ml.data import process_data, cat_features
 
 
 # Optional: implement hyperparameter tuning.
@@ -71,7 +72,10 @@ def inference(model, X):
     return model.predict(X)
 
 
-def performance_on_model_slices(model, df, feature, value):
-    df_copy = df.copy()
+def performance_on_model_slices(model, df, feature, value, encoder, lb):
     df = df[df[feature] == value]
-    return compute_model_metrics(df['salary'], inference(model, df_copy))
+    X, y, _, _ = process_data(
+        df, categorical_features=cat_features, label='salary', training=False, encoder=encoder, lb=lb
+    )
+    precision, recall, fbeta = compute_model_metrics(y, inference(model, X))
+    return {"precision": precision, "recall": recall, "fbeta": fbeta}
