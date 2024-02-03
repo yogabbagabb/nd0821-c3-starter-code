@@ -20,7 +20,7 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     X_a, X_b, y_a, y_b = train_test_split(
-        X_train, y_train, test_size = 0.33, random_state = 42
+        X_train, y_train, test_size=0.33, random_state=42
     )
     logit = LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                                intercept_scaling=1, l1_ratio=None, max_iter=100,
@@ -69,3 +69,9 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+
+def performance_on_model_slices(model, df, feature, value):
+    df_copy = df.copy()
+    df = df[df[feature] == value]
+    return compute_model_metrics(df['salary'], inference(model, df_copy))

@@ -12,7 +12,7 @@ def setup():
     data = pd.read_csv("../data/census.csv")
 
     # Optional enhancement, use K-fold cross validation instead of a train-test split.
-    train, test = train_test_split(data, test_size=0.20)
+    train, _ = train_test_split(data, test_size=0.20)
 
     cat_features = [
         "workclass",
