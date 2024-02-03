@@ -44,7 +44,7 @@ jobs:
           pip install -r starter/requirements.txt
       - id: change-render-env-variable
         run: |
-          echo $(date) > env.txt
+          echo "TIME=$(date)" > env.txt
           export RENDER_TOKEN=${{ secrets.RENDER_API_KEY }}
           render-cli set-env -sn nd0821-c3-starter-code -f env.txt
         shell: bash
