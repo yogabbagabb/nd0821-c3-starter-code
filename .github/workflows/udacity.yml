@@ -32,7 +32,7 @@ jobs:
         shell: bash
         working-directory: starter
       - id: flake8-test
-        run: flake8 ./starter
+        run: flake8 ./starter/starter
         shell: bash
   deploy:
     runs-on: ubuntu-latest
