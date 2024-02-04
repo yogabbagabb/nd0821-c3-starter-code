@@ -1,8 +1,8 @@
 # Script to train machine learning model.
 
 from sklearn.model_selection import train_test_split
-from starter.starter.ml.data import process_data
-from starter.starter.ml.model import train_model
+from starter.ml.data import process_data
+from starter.ml.model import train_model
 from joblib import dump
 import pandas as pd
 

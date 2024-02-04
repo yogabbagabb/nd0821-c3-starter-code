@@ -23,8 +23,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r starter/requirements.txt
-      - id: some-pytest
-        run: pytest --exitfirst ./starter
+      - id: test-model
+        run: PYTHONPATH=./ pytest test_train_model.py
+        shell: bash
+        working-directory: starter
+      - id: test-app
+        run: pytest test_app.py
         shell: bash
       - id: flake8-test
         run: flake8 ./starter
