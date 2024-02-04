@@ -26,10 +26,11 @@ jobs:
       - id: test-model
         run: PYTHONPATH=./ pytest test_train_model.py
         shell: bash
-        working-directory: starter
+        working-directory: starter/starter
       - id: test-app
         run: pytest test_app.py
         shell: bash
+        working-directory: starter
       - id: flake8-test
         run: flake8 ./starter
         shell: bash
