@@ -11,7 +11,8 @@ from sklearn.linear_model import LogisticRegression
 def setup():
     data = pd.read_csv("../data/census.csv")
 
-    # Optional enhancement, use K-fold cross validation instead of a train-test split.
+    # Optional enhancement, use K-fold cross validation instead of a
+    # train-test split.
     train, _ = train_test_split(data, test_size=0.20)
 
     cat_features = [
@@ -33,16 +34,16 @@ def setup():
 def test_train_model(setup):
     X_train, y_train, _, _ = setup
     model = train_model(X_train, y_train)
-    assert type(model) is LogisticRegression
+    assert isinstance(model, LogisticRegression)
 
 
 def test_compute_model_metrics(setup):
     X_train, y_train, _, _ = setup
     m1, m2, m3 = compute_model_metrics(y_train, y_train)
-    assert type(m1) is np.float64
+    assert isinstance(m1, np.float64)
 
 
 def test_inference(setup):
     X_train, y_train, _, _ = setup
     model = train_model(X_train, y_train)
-    assert type(inference(model, X_train)) is np.ndarray
+    assert isinstance(inference(model, X_train), np.ndarray)
