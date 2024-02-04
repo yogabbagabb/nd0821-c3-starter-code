@@ -23,11 +23,23 @@ def train_model(X_train, y_train):
     X_a, X_b, y_a, y_b = train_test_split(
         X_train, y_train, test_size=0.33, random_state=42
     )
-    logit = LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-                               intercept_scaling=1, l1_ratio=None, max_iter=100,
-                               multi_class='auto', n_jobs=None, penalty='l2',
-                               random_state=0, solver='liblinear', tol=0.0001, verbose=0,
-                               warm_start=False)
+    logit = LogisticRegression(
+        C=1.0,
+        class_weight=None,
+        dual=False,
+        fit_intercept=True,
+        intercept_scaling=1,
+        l1_ratio=None,
+        max_iter=100,
+        multi_class="auto",
+        n_jobs=None,
+        penalty="l2",
+        random_state=0,
+        solver="liblinear",
+        tol=0.0001,
+        verbose=0,
+        warm_start=False,
+    )
     # fit the logistic regression to your data
     model = logit.fit(X_a, y_a)
     return model
@@ -56,7 +68,7 @@ def compute_model_metrics(y, preds):
 
 
 def inference(model, X):
-    """ Run model inferences and return the predictions.
+    """Run model inferences and return the predictions.
 
     Inputs
     ------
@@ -75,7 +87,12 @@ def inference(model, X):
 def performance_on_model_slices(model, df, feature, value, encoder, lb):
     df = df[df[feature] == value]
     X, y, _, _ = process_data(
-        df, categorical_features=cat_features, label='salary', training=False, encoder=encoder, lb=lb
+        df,
+        categorical_features=cat_features,
+        label="salary",
+        training=False,
+        encoder=encoder,
+        lb=lb,
     )
     precision, recall, fbeta = compute_model_metrics(y, inference(model, X))
     return {"precision": precision, "recall": recall, "fbeta": fbeta}
