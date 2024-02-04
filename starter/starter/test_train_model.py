@@ -33,16 +33,16 @@ def setup():
 def test_train_model(setup):
     X_train, y_train, _, _ = setup
     model = train_model(X_train, y_train)
-    assert type(model) == LogisticRegression
+    assert type(model) is LogisticRegression
 
 
 def test_compute_model_metrics(setup):
     X_train, y_train, _, _ = setup
     m1, m2, m3 = compute_model_metrics(y_train, y_train)
-    assert type(m1) == np.float64
+    assert type(m1) is np.float64
 
 
 def test_inference(setup):
     X_train, y_train, _, _ = setup
     model = train_model(X_train, y_train)
-    assert type(inference(model, X_train)) == np.ndarray
+    assert type(inference(model, X_train)) is np.ndarray
