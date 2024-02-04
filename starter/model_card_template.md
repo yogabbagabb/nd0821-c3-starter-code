@@ -18,15 +18,23 @@ census.gov has made available an anonymized data set of user attributes and sala
 
 census.gov has made available an anonymized data set of user attributes and salaries. The evaluation data was obtained through an arbitrary horizontal slice of this data.
 
+This testing slice is 20% of the entire dataset.
+
 ## Metrics
 
 The metrics for the model's performance can be found in `data/slice_output.txt`. These metrics show the model's performance, when the model is applied to a dataset that is obtained by restricting the value of the `education` feature to a single value. For example, there is a metric that measures model performance when the data set solely consists of persons whose `education` is `Bachelors`. Likewise, there is a metric that measures performance when `education` is `Doctorate`, and so forth.
 
 The metrics used are `precision`, `recall` and `fbeta`.
 
+Their values are, respectively, (0.7065420560747664, 0.2412252712188896, 0.35965746907706947).
+
 ## Ethical Considerations
 
 Please don't use this on contemporary humans.
+
+If this model is used to predict salaries and, on that basis, important decisions are made (e.g. who gets admitted to a university and who doesn't) then you could be introducing bias.
+
+We find, for example, that this model will overwhelmingly assign less than 50K (as a salary) to those whose highest level of education is a Bachelors degree.
 
 ## Caveats and Recommendations
 
